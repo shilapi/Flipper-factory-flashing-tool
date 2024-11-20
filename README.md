@@ -34,7 +34,7 @@ Make sure the following requirements are met before running the script:
 1. Install the required Python dependencies:
 
     ```bash
-    pip install -r requirements.txt
+    pip install -r requirements
     ```
 
 2. Edit the config.yaml file to suit your needs.
