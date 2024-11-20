@@ -1,0 +1,22 @@
+
+OTP:
+  generate_new: False
+  version: 12
+  firmware: 7
+  body: 9
+  connect: 6
+  display: erc
+  color: black
+  region: world
+  name: clipper
+
+FUS:
+  address: '0x080EC000'
+  from_version: 0.5.3
+
+radio:
+  address: '0x080D7000'
+
+CKS:
+  generate_new: False
+  flash: True
