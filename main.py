@@ -117,22 +117,27 @@ def generate_OTP(otp_config):
     name = otp_config["name"]
 
     # Generate the OTP
-    subprocess.run(
-        [
-            python_path,
-            "scripts/otp.py",
-            "generate",
-            f"assets/OTP_{script_time}",
-            f"--version={version}",
-            f"--firmware={firmware}",
-            f"--body={body}",
-            f"--connect={connect}",
-            f"--display={display}",
-            f"--color={color}",
-            f"--region={region}",
-            f"--name={name}",
-        ]
-    )
+    if (
+        subprocess.run(
+            [
+                python_path,
+                "scripts/otp.py",
+                "generate",
+                f"assets/OTP_{script_time}",
+                f"--version={version}",
+                f"--firmware={firmware}",
+                f"--body={body}",
+                f"--connect={connect}",
+                f"--display={display}",
+                f"--color={color}",
+                f"--region={region}",
+                f"--name={name}",
+            ]
+        ).returncode
+        != 0
+    ):
+        logger.error("Failed to generate OTP")
+        raise Exception("Generation failed")
 
 
 def flash_OTP(otp_config):
@@ -149,21 +154,26 @@ def flash_OTP(otp_config):
     name = otp_config["name"]
 
     # Flash the OTP
-    subprocess.run(
-        [
-            python_path,
-            "scripts/otp.py",
-            "flash_all",
-            f"--version={version}",
-            f"--firmware={firmware}",
-            f"--body={body}",
-            f"--connect={connect}",
-            f"--display={display}",
-            f"--color={color}",
-            f"--region={region}",
-            f"--name={name}",
-        ]
-    )
+    if (
+        subprocess.run(
+            [
+                python_path,
+                "scripts/otp.py",
+                "flash_all",
+                f"--version={version}",
+                f"--firmware={firmware}",
+                f"--body={body}",
+                f"--connect={connect}",
+                f"--display={display}",
+                f"--color={color}",
+                f"--region={region}",
+                f"--name={name}",
+            ]
+        ).returncode
+        != 0
+    ):
+        logger.error("Failed to flash OTP")
+        raise Exception("Flash failed")
 
 
 def flash_core2_fus(fus_config):
