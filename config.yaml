@@ -1,4 +1,3 @@
-
 OTP:
   generate_new: False
   version: 12
@@ -6,16 +5,82 @@ OTP:
   body: 9
   connect: 6
   display: erc
-  color: black
+  color: white
   region: world
-  name: clipper
+  name:
+    - Blaze
+    - Stride
+    - Pulse
+    - Whirl
+    - Surfer
+    - Javelin
+    - Raptor
+    - Tornado
+    - Fathom
+    - Striker
+    - Ghost
+    - Pegasus
+    - Streak
+    - Hype
+    - Quantum
+    - Drifter
+    - Glimmer
+    - Zinger
+    - Sparky
+    - Sprint
+    - Jinx
+    - Onyx
+    - Brisk
+    - Jetty
+    - Sprinto
+    - Breezy
+    - Wave
+    - Tracker
+    - Razor
+    - Skyblade
+    - Stinger
+    - Zeal
+    - Tempest
+    - Ripple
+    - Horizon
+    - Quiver
+    - Electra
+    - Zeno
+    - Archer
+    - Echo
+    - Breezer
+    - Phantom
+    - Firefly
+    - Mercury
+    - Cyclone
+    - AeroJet
+    - Flux
+    - Raiden
+    - Rocket
+    - Ember
+    - Spira
+    - Scorpion
+    - Drako
+    - Hawk
+    - Swoosh
+    - Sonic
+    - Titan
+    - Torch
+    - Zenith
+    - Radial
+    - Spire
+    - Pronto
+    - Scout
+    - Glint
+    - Drift
+    - Zoomer
 
 FUS:
-  address: '0x080EC000'
-  from_version: 0.5.3
+  address: "0x080EC000"
+  from_version: 1.2.0
 
 radio:
-  address: '0x080D7000'
+  address: "0x080D7000"
 
 CKS:
   generate_new: False

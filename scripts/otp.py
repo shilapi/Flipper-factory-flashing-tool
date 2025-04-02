@@ -90,7 +90,7 @@ class Main(App):
             "--interface",
             type=str,
             help="OpenOCD interface",
-            default="interface/cmsis-dap.cfg",
+            default="interface/stlink.cfg",
         )
         parser.add_argument(
             "--serial", type=str, help="OpenOCD interface serial number"

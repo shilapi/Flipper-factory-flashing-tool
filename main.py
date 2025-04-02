@@ -6,6 +6,7 @@ import colorlog
 import yaml
 import subprocess
 from Crypto.Cipher import AES
+import random
 
 config = yaml.safe_load(open("config.yaml"))
 
@@ -114,7 +115,7 @@ def generate_OTP(otp_config):
     display = otp_config["display"]
     color = otp_config["color"]
     region = otp_config["region"]
-    name = otp_config["name"]
+    name = "Clipper"
 
     # Generate the OTP
     if (
@@ -151,7 +152,8 @@ def flash_OTP(otp_config):
     display = otp_config["display"]
     color = otp_config["color"]
     region = otp_config["region"]
-    name = otp_config["name"]
+    name = random.choice(otp_config["name"])
+    print(f"Name: {name}")
 
     # Flash the OTP
     if (
@@ -289,7 +291,22 @@ def flash_cks():
         "key_10.bin": "3",
     }
 
-    for i in key_list.keys():
+    key_list_unencrypted = {
+        "key_master.bin": "2",
+        "key_unencrypted_1.bin": "1",
+        "key_unencrypted_2.bin": "1",
+        "key_unencrypted_3.bin": "1",
+        "key_unencrypted_4.bin": "1",
+        "key_unencrypted_5.bin": "1",
+        "key_unencrypted_6.bin": "1",
+        "key_unencrypted_7.bin": "1",
+        "key_unencrypted_8.bin": "1",
+        "key_unencrypted_9.bin": "1",
+        "key_unencrypted_10.bin": "1",
+    }
+
+    for i in key_list_unencrypted.keys():
+        print(i)
         if (
             subprocess.run(
                 [
@@ -299,7 +316,7 @@ def flash_cks():
                     "freq=24000",
                     "-wusrkey",
                     f"assets/cks/{i}",
-                    f"keytype={key_list[i]}",
+                    f"keytype={key_list_unencrypted[i]}",
                 ]
             ).returncode
             != 0
@@ -359,7 +376,7 @@ def main():
         try:
             flash_OTP(config["OTP"])
 
-            flash_core2_fus(config["FUS"])
+            # flash_core2_fus(config["FUS"])
 
             flash_core2_radio(config["radio"])
 
@@ -368,7 +385,7 @@ def main():
 
             flash_bootloader()
 
-            flash_firmware()
+            # flash_firmware()
 
             logger.info(finish_banner)
             if input("Press 'q' to exit, or any other key to continue: ") == "q":

@@ -36,11 +36,13 @@ class CubeProgrammer:
             output = subprocess.check_output(params)
         except subprocess.CalledProcessError as e:
             if e.output:
-                print("Process output:\n", e.output.decode())
+                self.logger.error(
+                    f"Process output:\n{e.output.decode('utf-8', errors='ignore')}"
+                )
             print("Process return code:", e.returncode)
             raise e
         assert output
-        return output.decode()
+        return output.decode("utf-8", errors="ignore")
 
     def getVersion(self):
         self._execute(["--version"])
@@ -81,6 +83,7 @@ class CubeProgrammer:
     def flashBin(self, address, filename):
         self._execute(
             [
+                "freq=24000",
                 "-d",
                 filename,
                 f"{address}",
